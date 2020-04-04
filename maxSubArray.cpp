@@ -1,3 +1,6 @@
+//Given an integer array nums, return the sum of contiguous subarray (containing at least one number).
+
+
 #include<bits/stdc++.h>
 class Solution {
 public:
