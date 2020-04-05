@@ -1,8 +1,15 @@
-//To find subset in a set of n numbers thats sums up to a given value.
+//To find all subsets in a set of n numbers thats sums up to a given value.
 #include <iostream>
 #include<vector>
 using namespace std;
 
+
+
+/*This function basically returns a set of all the bitmasks which correspond to a subset of the given set.
+  For instance- "17" has a binary value of 10001 which corresponds to a subset containing the element at only 4th and 0th position.Therefore if 
+  given set was {1,2,3,4,5,6}, the corresponding subset would be {1,5}. Ergo, "17" corresponds to subset {1,5}. Each bitmask will correpond
+  to different subsets. */
+ 
 vector<int> getMasks(int *arr, int sum, int n)
 {
         vector<int> masks;
@@ -21,7 +28,13 @@ vector<int> getMasks(int *arr, int sum, int n)
    return masks;      
 }
 
-std::vector<vector<int>> getEl(int *arr, int sum, int n)
+
+
+
+
+/*Here, the function is returning a vector of all the subsets which sum to a given value*/
+
+std::vector<vector<int>> getAllSubsets(int *arr, int sum, int n)
 {
         vector<int> masks=getMasks(arr,sum,n);
          for(auto val: masks)
@@ -59,7 +72,7 @@ std::vector<vector<int>> getEl(int *arr, int sum, int n)
 int main()
 {
    int arr[]={0,1,2,3,4,6,7,8,9,10};
-   vector<vector<int>> getsub =getEl(arr,10,11);
+   vector<vector<int>> getsub =getAllSubsets(arr,10,11);
    for(auto val: getsub)
    {
            for(auto x: val)
