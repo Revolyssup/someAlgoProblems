@@ -71,6 +71,7 @@ std::vector<vector<int>> getAllSubsets(int *arr, int sum, int n)
 
 int main()
 {
+   //Example with a test case 	
    int arr[]={0,1,2,3,4,6,7,8,9,10};
    vector<vector<int>> getsub =getAllSubsets(arr,10,11);
    for(auto val: getsub)
