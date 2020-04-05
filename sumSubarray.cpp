@@ -7,7 +7,7 @@ using namespace std;
 
 /*This function basically returns a set of all the bitmasks which correspond to a subset of the given set.
   For instance- "17" has a binary value of 10001 which corresponds to a subset containing the element at only 4th and 0th position.Therefore if 
-  given set was {1,2,3,4,5,6}, the corresponding subset would be {1,5}. Ergo, "17" corresponds to subset {1,5}. Each bitmask will correpond
+  given set was {1,2,3,4,5,6} had bitmask 17 then corresponding subset would be {1,5}. Ergo, "17" corresponds to subset {1,5}. Each bitmask will correpond
   to different subsets. */
  
 vector<int> getMasks(int *arr, int sum, int n)
