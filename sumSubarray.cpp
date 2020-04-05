@@ -1,4 +1,4 @@
-//To find all subsets in a set of n numbers thats sums up to a given value.
+//To find all subsets in a set of n numbers that sum up to a given value.
 #include <iostream>
 #include<vector>
 using namespace std;
