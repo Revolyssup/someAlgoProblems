@@ -78,7 +78,7 @@ int main()
    {
            for(auto x: val)
          {
-                cout<<x;
+                cout<<x<<"," ;
          }
          cout<<endl;
          
