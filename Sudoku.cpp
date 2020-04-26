@@ -37,13 +37,13 @@ void solve(int* arr){
         {
                 for(int j=0;j<9;j++)
                 {
-                        if(arr[i*j]==0){
+                        if(*(arr+i*9+j)==0){
                                 for(int k=0;k<9;k++){
                                         if(check(arr,i,j,k))
                                         {
-                                                arr[i*j]=k;
+                                                *(arr+i*9+j)=k;
                                                 solve(arr);
-                                                arr[i*j]=0;
+                                               *(arr+i*9+j)=0;
                                         }
                                 }
                         }
