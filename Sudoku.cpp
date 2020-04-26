@@ -94,7 +94,7 @@ void print(int* arr){
 
 int main()
 {
-    int* arr= new int[3*3];
+    int* arr= new int[9*9];
     Enter(arr);
     cout<<"Entered array is :"<<endl;
     print(arr);
