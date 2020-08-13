@@ -6,6 +6,9 @@ Koko likes to eat slowly, but still wants to finish eating all the bananas befor
 
 Return the minimum integer K such that she can eat all the bananas within H hours.
 */
+
+
+//Completed in nlogn
 #include<bits/stdc++.h> 
 using namespace std;
 class Solution {
