@@ -86,6 +86,7 @@ std::vector<int> createNoise(std::vector<int>& tosend){
 
 int main(){
     //Select any value n and create test with number of elements as (2^n -n -1)
+    //Here n is 3
     std::vector<int> test={0,1,0,1};
     std::cout<<"\nActual information from sender......\n";
      for(int i=0;i<test.size();i++)
