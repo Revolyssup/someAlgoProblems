@@ -85,13 +85,14 @@ std::vector<int> createNoise(std::vector<int>& tosend){
 
 
 int main(){
+    //Select any value n and create test with number of elements as (2^n -n -1)
     std::vector<int> test={0,1,0,1};
     std::cout<<"\nActual information from sender......\n";
      for(int i=0;i<test.size();i++)
         std::cout<<test[i]<<" ";
 
 
-    std::vector<int> ans=senderBits(test,8);
+    std::vector<int> ans=senderBits(test,8); // second argument is 2^n
     std::cout<<"\nBefore noise......\n";
      for(int i=0;i<ans.size();i++)
         std::cout<<ans[i]<<" ";
