@@ -37,9 +37,11 @@ std::vector<int> senderBits(std::vector<int>& info,int size){
                 if(j&i){ //This bit belongs to the group and so contributes to the parity of this group.
                     tosend[i]=tosend[i]^tosend[j];
                 }
-                tosend[i]=tosend[i]^tosend[j];
             }
         }
+        //checking overall parity
+        for(int i=1;i<tosend.size();i++) tosend[0]=tosend[0]^tosend[i];
+
     return tosend;
 }
 
