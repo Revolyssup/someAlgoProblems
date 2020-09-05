@@ -32,19 +32,14 @@ std::vector<int> senderBits(std::vector<int>& info,int size){
 
   
         /**Setting the parity bits after checking their groups*/
-        int overallParity=0;
         for(int i=1;i<size;i*=2){ 
-            int flag=0;
             for(int j=1;j<size;j++){ 
                 if(j&i){ //This bit belongs to the group and so contributes to the parity of this group.
-                    flag=flag^tosend[j];
+                    tosend[i]=tosend[i]^tosend[j];
                 }
-                overallParity=overallParity^tosend[j];
+                tosend[i]=tosend[i]^tosend[j];
             }
-            tosend[i]=flag;
-            
         }
-    tosend[0]=overallParity;
     return tosend;
 }
 
@@ -86,7 +81,7 @@ std::vector<int> createNoise(std::vector<int>& tosend){
 
 int main(){
     //Select any value n and create test with number of elements as (2^n -n -1)
-    //Here n is 3
+    //Here n is 5
     std::vector<int> test={0,1,0,1};
     std::cout<<"\nActual information from sender......\n";
      for(int i=0;i<test.size();i++)
