@@ -75,7 +75,7 @@ std::vector<int>  extract(std::vector<int>& recieved){
 /**Dummy function to return message with one random bit flip */
 std::vector<int> createNoise(std::vector<int>& tosend){
     std::vector<int> distorted=tosend;
-    int randindex=rand()%(tosend.size());
+    int randindex=(rand()%(tosend.size()-1))+1;
     distorted[randindex]=!distorted[randindex]; 
     return distorted;
 }
