@@ -40,3 +40,8 @@ int minEatingSpeed(vector<int>& piles, int H) {
     }
 };
 
+int main(){
+    Solution sol;
+    std::vector<int> nidhi={8,10,7,41};
+    std::cout<<sol.minEatingSpeed(nidhi,10)<<std::endl;
+}
