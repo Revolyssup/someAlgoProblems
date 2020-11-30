@@ -17,7 +17,7 @@ This is an optimal substructure as optimizing the subproblems will inturn optimi
 //Non-DP approach
 int cut_rod(int* prices,int n){
         if(n==0) return 0; //base case
-        if(n==1) return prices[1];
+        if(n==1) return prices[0];
         int max_val=INT_MIN;
         for(int i=1;i<=n;i++){
             max_val=max(max_val,prices[i]+cut_rod(prices,n-i));
@@ -56,7 +56,7 @@ int dp_cut_rod_bum(int* prices,int n){
     int* mem=new int[n+1];
     for(int i=0;i<=n;i++) mem[i]=INT_MIN; //As we will already start from smallest problems,no need to initialize as minus infinite.
     for(int i=1;i<=n;i++){
-        if(mem[i]>=0) return mem[i];
+        // if(mem[i]>=0) return mem[i];
         int max_val=INT_MIN;
         for(int j=1;j<=i;j++){
             max_val=max(max_val,prices[j]+prices[i-j]);

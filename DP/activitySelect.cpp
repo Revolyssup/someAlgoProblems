@@ -2,7 +2,7 @@
 // subset of mutually compatible activities.
 
 #include<bits/stdc++.h>
-#include "../ds-algo-atstl/atstllib/utils.hpp"
+#include "../../ds-algo-atstl/atstllib/atstl.hpp"
 int max(int a,int b){
     if(a>b) return a;
     else return b;
@@ -43,7 +43,7 @@ int dpApproach(int activities[][2], int size){
 int greedy(int arr[][2],int size){ //We start from k=0, as that has the minimum final time,so acc to greedy its the best to start with
     int k=0;
     int total=1;
-    for(int m=2;m<size;m++){
+    for(int m=1;m<size;m++){
         if(arr[m][0]>=arr[k][1]){
             total++;
             k=m;
@@ -52,12 +52,10 @@ int greedy(int arr[][2],int size){ //We start from k=0, as that has the minimum 
     return total;
 }
 
-
 int main(){
     int ans[][2]={{1,4},{3,5},{0,6},{5,7},{3,9},{5,9},{6,10},{8,11},{8,12},{2,14},{12,16}};
      //Note that activities are given in second index(finish time)  sorted  order. 
     // This type of finish time sorting will help us in greedy approach.
-
     auto start=std::chrono::high_resolution_clock::now();
     auto greed=greedy(ans,11);
     auto end=std::chrono::high_resolution_clock::now();

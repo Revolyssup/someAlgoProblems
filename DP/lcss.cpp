@@ -17,10 +17,10 @@ class Solution{
             return max(rec(i-1,j),rec(i,j-1)); //Modify the problem into two problems and take max of them.
         }
     }
-    void dp(){
+    int dp(){
         for(int i=1;i<A.size()+1;i++){
             for(int j=1;j<B.size()+1;j++){
-                 if(solns[i][j]!=0) return;  
+                 if(solns[i][j]!=0) return 0;  
                  if(A[i-1]==B[j-1]){
                          solns[i][j]=(solns[i-1][j-1]+1); 
                       }
@@ -29,7 +29,7 @@ class Solution{
                      }
             }
         }
-        
+        return this->solns[A.size()][B.size()];
     }
     public:
     Solution( std::vector<T>& a,std::vector<T> &b):A(a),B(b){
@@ -45,8 +45,7 @@ class Solution{
         return rec(A.size()-1,B.size()-1);
     }
     int solveWithDP(){
-        dp();
-        return solns[A.size()][B.size()];
+        return dp();
     }
 
 };

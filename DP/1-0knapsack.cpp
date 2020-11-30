@@ -27,6 +27,6 @@ int yo(int arr[][2],int n,int w){
 int main(){
     int n;
     std::cin>>n;
-    int arr[][2]={{10,2},{2,5},{10,5}};
+    int arr[][2]={{60,10},{100,20},{120,30}};
     std::cout<<yo(arr,3,n-1)<<"\n";
 }
