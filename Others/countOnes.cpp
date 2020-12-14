@@ -21,15 +21,10 @@ vector<int> giveOnes(int n)
                         power++;
 
                 }
-                temp=i;
-                power=pow(2,power);
-                while(temp!=0){
-                        if(power<=temp){
-                                temp=temp%power;
-                                ones++;
-                        }
-                        power=power/2;
-                        
+                temp=1;
+                while(temp<=pow(2,power)){
+                        if(temp&i) ones++;
+                        temp*=2;
                 }
                 
             ans.push_back(ones);        

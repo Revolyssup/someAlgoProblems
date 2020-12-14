@@ -1,5 +1,7 @@
+#include<iostream>
+#include<vector>
 class Solution{   
-  	 int findDuplicateNumber(vector<int>& nums) {
+  	 int findDuplicateNumber(std::vector<int>& nums) {
           //Using Floyd's method
         
      	     //Finding intersection of two runners
