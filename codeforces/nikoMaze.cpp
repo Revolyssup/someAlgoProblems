@@ -21,7 +21,8 @@
 // You can print the words in any case (either lowercase, uppercase or mixed).
 
 
-#include<bits/stdc++.h>
+#include<bits/stdc++.h> 
+
 
 int main(){
     int n,q;

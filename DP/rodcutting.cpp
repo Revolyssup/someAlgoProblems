@@ -1,6 +1,7 @@
 #include<iostream>
 #include<chrono>
 #include<climits>
+#include<bits/stdc++.h>
 long long int max(long long int a,long long int b);
 int cut_rod(int* prices,int n);
 int dp_cut_rod_tdm(int* prices,int n); //dp approach (top-down memoization)
@@ -55,11 +56,12 @@ We solve smaller problems first and based on those we solve bigger subproblems*/
 int dp_cut_rod_bum(int* prices,int n){
     int* mem=new int[n+1];
     for(int i=0;i<=n;i++) mem[i]=INT_MIN; //As we will already start from smallest problems,no need to initialize as minus infinite.
+    mem[0]=0;
     for(int i=1;i<=n;i++){
         // if(mem[i]>=0) return mem[i];
         int max_val=INT_MIN;
         for(int j=1;j<=i;j++){
-            max_val=max(max_val,prices[j]+prices[i-j]);
+            max_val=max(max_val,prices[j]+mem[i-j]);
         }
         mem[i]=max_val;
     }
@@ -78,20 +80,20 @@ int main(){
     int prices[]={0,1,5,8,9,10,17,17,20,24,30,50,6,2,18,49,45,48,50,63,89,78,42,10,79,23,49,89,3,8,79}; //ith index represents price of ith len. So 0th index will always be zero.
     int n;
     std::cin>>n;
-    auto start=std::chrono::high_resolution_clock::now();
-    int ans=cut_rod(prices,n);
-    auto end=std::chrono::high_resolution_clock::now();
-    auto duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
-    std::cout<<ans<<"normal with microseconds "<<duration.count()<<"\n";
-    start=std::chrono::high_resolution_clock::now();
-    ans=dp_cut_rod_tdm(prices,n);
-    end=std::chrono::high_resolution_clock::now();
-    duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
-    std::cout<<ans<<"top down rec with microseconds "<<duration.count()<<"\n";
+    // auto start=std::chrono::high_resolution_clock::now();
+    // int ans=cut_rod(prices,n);
+    // auto end=std::chrono::high_resolution_clock::now();
+    // auto duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
+    // std::cout<<ans<<"normal with microseconds "<<duration.count()<<"\n";
+    // start=std::chrono::high_resolution_clock::now();
+    // ans=dp_cut_rod_tdm(prices,n);
+    // end=std::chrono::high_resolution_clock::now();
+    // duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
+    // std::cout<<ans<<"top down rec with microseconds "<<duration.count()<<"\n";
 
-    start=std::chrono::high_resolution_clock::now();
-    ans=dp_cut_rod_bum(prices,n);
-    end=std::chrono::high_resolution_clock::now();
-    duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
-    std::cout<<ans<<"bottom up iterative with microseconds "<<duration.count()<<"\n";
+    // start=std::chrono::high_resolution_clock::now();
+    // ans=dp_cut_rod_bum(prices,n);
+    // end=std::chrono::high_resolution_clock::now();
+    // duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
+    // std::cout<<ans<<"bottom up iterative with microseconds "<<duration.count()<<"\n";
 }
