@@ -7,7 +7,8 @@ int max(int a,int b){
 
 
 //Bottom-up approach.
-int** solve(int* p,int* w,int n,int maxW){
+int solve(int* p,int* w,int n,int maxW,bool* acceptedWeights){
+    int temp;
     int** answers=new int*[n];
     for(int i=0;i<n;i++){
         answers[i]=new int[maxW+1];
@@ -25,15 +26,27 @@ int** solve(int* p,int* w,int n,int maxW){
         if(i==0){
             //for first iteration(All those who exceed weight limit are already excluded in first if block.)
             answers[i][j]=p[i]; 
+            acceptedWeights[i]=1;
         }
         else{
-            answers[i][j]=max(answers[i-1][j],p[i]+answers[i-1][j-w[i]]);
+            temp=max(answers[i-1][j],p[i]+answers[i-1][j-w[i]]);
+            answers[i][j]=temp;
+
+            //seeing if we included this weight.
+            if(temp==p[i]+answers[i-1][j-w[i]]){
+                acceptedWeights[i]=1;
+            }else acceptedWeights[i]=0;
             }
         }
     }
 
-    return answers;
+    temp= answers[n-1][maxW];
+    for(int i=0;i<n;i++) delete[] answers[i];
+    return temp;
 }
+
+
+
 
 int main(){
     int maxW,n;
@@ -53,10 +66,11 @@ int main(){
     std::cin>>maxW;
 
 
-
+    bool* acceptedWeights=new bool[n];
+    for(int i=0;i<n;i++) acceptedWeights[i]=0;
     // std::cout<<"Best price you can have is: "<<solve(prices,weights,maxW,n)<<"\n";
 
-    int** ans=solve(prices,weights,n,maxW);
+    
     // std::cout<<"The weights that you should take are:\n";
     // int maxProfit=0;
     // for(int i=0;i<n;i++){
@@ -65,11 +79,15 @@ int main(){
     //         maxProfit+=prices[i];
     //     }
     // }
-    std::cout<<"Max proft is: "<<ans[n-1][maxW]<<":\n";
+    std::cout<<"Max proft is: "<<solve(prices,weights,n,maxW,acceptedWeights)<<"\n";
 
-
+    std::cout<<"Included weights are: \n";
+    for(int i=0;i<n;i++){
+        if(acceptedWeights[i]) std::cout<<weights[i]<<" kg \n";
+    }
+    std::cout<<"\n";
     //cleaning
-    for(int i=0;i<n;i++) delete[] ans[i];
     delete[] prices;
     delete[] weights;
+    delete[] acceptedWeights;
 }
