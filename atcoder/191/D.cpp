@@ -27,3 +27,31 @@ int cmp(int& a,int& b,bool& max){
     if(max) return a;
        return b;
 }
+
+
+bool isin(int x1,int y1,double x,double y,double r){
+    double lhs=((x-x1)*(x-x1))+((y-y1)*(y-y1));
+    double rhs=r*r;
+    if(lhs<=rhs) return true;
+    return false;
+}
+int solve(double x,double y,double r){
+    int u=floor(y+r),d=floor(y-r),rt=floor(x+r),lt=floor(x-r);
+    int count=0;
+    Fo(i,lt,rt){
+        Fo(j,d,u){
+            if(isin(i,j,x,y,r)){
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+
+int main(){
+    double x,y,r;
+
+    CI(x);CI(y);CI(r);
+    CO(solve(x,y,r));
+}

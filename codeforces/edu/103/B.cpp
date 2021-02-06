@@ -12,18 +12,21 @@ using namespace std;
 typedef long long ll;
 typedef std::vector<int> vi;
 typedef std::vector<std::vector<int>> vvi;
-typedef std::pair<int,int> pii;
-typedef std::pair<double,double> pdd;
-typedef std::set<std::pair<int,int>> spi;
-typedef std::set<int> si;
-typedef std::set<int>::iterator sit;
 
-//standard utility functions.
-int cmp(int& a,int& b,bool& max){
-    if(a<b){
-       if(max) return b;
-       return a;
+
+
+
+int ans(vi& a,int k){
+
+}
+int main(){
+    int t,n,k;
+    Fo(i,0,t){
+        CI(n);
+        CI(k);
+        vi a(n);
+        Fo(j,0,n) CI(a[j]);
+        CO(ans(a,k));
+        CO("\n");
     }
-    if(max) return a;
-       return b;
 }
