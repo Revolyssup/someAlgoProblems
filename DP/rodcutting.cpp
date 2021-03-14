@@ -85,15 +85,15 @@ int main(){
     // auto end=std::chrono::high_resolution_clock::now();
     // auto duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
     // std::cout<<ans<<"normal with microseconds "<<duration.count()<<"\n";
-    // start=std::chrono::high_resolution_clock::now();
-    // ans=dp_cut_rod_tdm(prices,n);
-    // end=std::chrono::high_resolution_clock::now();
-    // duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
-    // std::cout<<ans<<"top down rec with microseconds "<<duration.count()<<"\n";
+    auto start=std::chrono::high_resolution_clock::now();
+    auto ans=dp_cut_rod_tdm(prices,n);
+    auto end=std::chrono::high_resolution_clock::now();
+    auto duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
+    std::cout<<ans<<"top down rec with microseconds "<<duration.count()<<"\n";
 
-    // start=std::chrono::high_resolution_clock::now();
-    // ans=dp_cut_rod_bum(prices,n);
-    // end=std::chrono::high_resolution_clock::now();
-    // duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
-    // std::cout<<ans<<"bottom up iterative with microseconds "<<duration.count()<<"\n";
+    start=std::chrono::high_resolution_clock::now();
+    ans=dp_cut_rod_bum(prices,n);
+    end=std::chrono::high_resolution_clock::now();
+    duration=std::chrono::duration_cast<std::chrono::microseconds>(end-start);
+    std::cout<<ans<<"bottom up iterative with microseconds "<<duration.count()<<"\n";
 }
