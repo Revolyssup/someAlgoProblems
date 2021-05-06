@@ -18,7 +18,7 @@ public:
             int temp;
             while(itr1!=NULL && itr2!=NULL){
                 temp=(itr1->val)+(itr2->val)+carry;
-                if(temp!=(temp%10)){ //we have a carry
+                if(temp>9){ //we have a carry
                     carry=1;
                     temp=(temp%10);
                 }else{
@@ -61,38 +61,65 @@ public:
                 itr2=itr2->next;
             }
             
-            itrans=ans;
-            while(itrans->next->next!=NULL) itrans=itrans->next; //reach the second last node
-            itrans->next=NULL;
+            if(carry){
+                itrans->val=carry;
+                itrans->next=NULL;           
+            }else{
+                    itrans=ans;
+                   while(itrans->next->next!=NULL){
+                       ListNode* temp=itrans;
+                        itrans=itrans->next; 
+                        delete temp;
+                        }
+                     itrans->next=NULL;
+            }
             return ans;
     }
 };
 
+
+ListNode* fill(int n){
+    ListNode* head=new ListNode();
+    ListNode* itr=head;
+    for(int i=0;i<n-1;i++){
+        std::cin>>itr->val;
+        itr->next=new ListNode();
+        itr=itr->next;
+    }
+    std::cin>>itr->val; //last time. This time no new node.s  
+    return head;
+}
+
+void del(ListNode* head){
+    ListNode* itr=head;
+    ListNode* itr2=itr;
+    while(itr){
+        itr=itr->next;
+        delete itr2;
+        itr2=itr;
+    }
+}
 int main(){
-    ListNode* l3=new ListNode(9);
-    ListNode* l2=new ListNode(4,l3);
-    ListNode* l1=new ListNode(5,l2);
-
-
-    ListNode* k3=new ListNode(6);
-    ListNode* k2=new ListNode(5,k3);
-
-
-
     Solution sol;
-    ListNode* bruh=sol.addTwoNumbers(l1,k2);
+    int n;
+    std::cout<<"Enter number of elements of first list .\n";
+    std::cin>>n;
+    std::cout<<"Enter elements of first list(space seperated) from head to tail.\n";
+    ListNode* l1=fill(n);
+    std::cout<<"Enter number of elements of second list .\n";
+     std::cin>>n;
+    std::cout<<"Enter elements of second list(space seperated) from head to tail.\n";
+    ListNode* l2=fill(n);
+    ListNode* bruh=sol.addTwoNumbers(l1,l2);
     ListNode* temp=bruh;
-    std::cout<<"Sum is: ";
+    std::cout<<"Printing list: ";
     while(temp){
         std::cout<<temp->val;
         temp=temp->next;
     }
     std::cout<<std::endl;
 
-    delete l1;
-    delete l2;
-    delete l3;
-    // delete k1;
-    delete k2;
-    delete k3;
+    del(l1);del(l2);
+    // delete l1;
+    // delete l2;
 }
