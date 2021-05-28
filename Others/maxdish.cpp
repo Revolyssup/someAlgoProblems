@@ -10,7 +10,7 @@ int solve(vector<int>& a){
     map<int,vector<int>> store;
     for(int i=0;i<a.size();i++) {
         int n=store[a[i]].size();
-        if(store[a[i]].size()==0 || store[a[i]][n-1]!=i-1){
+        if(store[a[i]].empty() || store[a[i]][n-1]!=i-1){
 
               store[a[i]].push_back(i);
         }
