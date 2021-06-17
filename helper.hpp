@@ -27,3 +27,51 @@ int cmp(int& a,int& b,bool& max){
     if(max) return a;
        return b;
 }
+
+namespace helper{
+template<typename T>
+void fillArr(vector<T> &arr){
+   for(int i=0;i<arr.size();i++){
+      T temp;
+      std::cin>>temp;
+      arr.push_back(temp);
+   }
+}
+
+template<typename T>
+void fillArr(vector<T> &arr,int n){
+   for(int i=0;i<n;i++){
+      T temp;
+      std::cin>>temp;
+      arr[i]=temp;
+   }
+}
+
+template<typename T>
+void printArr(vector<int>& a){
+   std::cout<<"Printing array...\n";
+   for(int i=0;i<a.size();i++){
+      std::cout<<a[i]<<" ";
+   }
+   std::cout<<std::endl;
+}
+
+template<typename T>
+void printArr(vector<int>& a,std::string& s){
+   std::cout<<s<<"\n";
+   for(int i=0;i<a.size();i++){
+      std::cout<<a[i]<<" ";
+   }
+   std::cout<<std::endl;
+}
+template<typename T>
+void printArr(vector<int>& a,const char* s){
+   std::cout<<s<<"\n";
+   for(int i=0;i<a.size();i++){
+      std::cout<<a[i]<<" ";
+   }
+   std::cout<<std::endl;
+}
+
+
+}
